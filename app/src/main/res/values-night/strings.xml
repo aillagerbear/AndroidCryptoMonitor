@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="currentFavCoin">요즘 어떤 코인에\n마음을 뺏겼나요?</string>
+    <string name="selectionComplete">선택 완료</string>
+</resources>
