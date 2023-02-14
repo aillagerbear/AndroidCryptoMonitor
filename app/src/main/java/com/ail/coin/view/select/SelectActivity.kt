@@ -28,6 +28,8 @@ class SelectActivity : AppCompatActivity() {
             selectRVAdapter.updateData(result) // update the adapter with the new data
         }
 
+        viewModel.setUpFirstFlag()
+
         binding.laterTextArea.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

@@ -15,12 +15,10 @@ class SelectRVAdapter(
 ) : RecyclerView.Adapter<SelectRVAdapter.ViewHolder>() {
 
     private val selectedCoinList = mutableListOf<String>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = IntroCoinItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(coinPriceList[position], selectedCoinList)
     }

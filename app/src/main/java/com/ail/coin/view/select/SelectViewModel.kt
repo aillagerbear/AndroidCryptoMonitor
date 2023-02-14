@@ -1,11 +1,11 @@
 package com.ail.coin.view.select
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ail.coin.Repository.NetWorkRepository
+import com.ail.coin.dataStore.MyDataStore
 import com.ail.coin.model.CurrentPrice
 import com.ail.coin.model.CurrentPriceResult
 import com.google.gson.Gson
@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 class SelectViewModel: ViewModel() {
 
     private val netWorkRepository = NetWorkRepository()
-    private val tag = SelectViewModel::class.java.simpleName
 
     private lateinit var currentPriceResultList: ArrayList<CurrentPriceResult>
 
@@ -30,7 +29,6 @@ class SelectViewModel: ViewModel() {
 
         for (coin in result.data ) {
 
-            try {
                 val gson = Gson()
                 val gsonToJson = gson.toJson(result.data.get(coin.key))
                 val gsonFromJson = gson.fromJson(gsonToJson, CurrentPrice::class.java)
@@ -38,14 +36,13 @@ class SelectViewModel: ViewModel() {
 
                 currentPriceResultList.add(currentPriceResult)
 
-            }catch (e : java.lang.Exception) {
-
-            }
 
         }
-
         currentPriceResultLiveData.value = currentPriceResultList
+    }
 
+    fun setUpFirstFlag() = viewModelScope.launch {
+        MyDataStore().setupFirstData()
     }
 
 }
