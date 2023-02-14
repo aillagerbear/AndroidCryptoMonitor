@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="maicColor">#A6D785</color>
     <color name="mint">#3FFDBD</color>
-    <color name="red">#FF0000</color>
+    <color name="red">#D50000</color>
     <color name="blue">#0096FF</color>
+    <color name="green">#00C853</color>
+
 </resources>

@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="currentFavCoin">요즘 어떤 코인에\n마음을 뺏겼나요?</string>
     <string name="selectionComplete">선택 완료</string>
+    <string name="coinname">coinName</string>
+    <string name="coinPriceUpDown">coinPriceUpDown</string>
+    <string name="isLiked">좋아요 확인</string>
 </resources>

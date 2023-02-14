@@ -11,3 +11,4 @@
 | `Refactor`         | 상용 코드 재구조화                  | `Refactor: 사용자 인증 코드의 성능 개선`                  |
 | `Comment`          | 주석 추가 또는 변경                 | `Comment: 사용자 인증 코드에서 변수의 의미 개정`              |
 | `Edit Docs`        | 문서 업데이트                     | `Edit Docs:                                   |
+| `Init`             | 새로운 파일 생성                    | `Init: readme.md 파일 생성`                            |
