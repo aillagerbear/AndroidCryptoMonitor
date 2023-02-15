@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.ail.coin.MainActivity
 import com.ail.coin.databinding.ActivitySelectBinding
 import com.ail.coin.view.adpapter.SelectRVAdapter
+import androidx.lifecycle.Observer
 
 class SelectActivity : AppCompatActivity() {
 
@@ -28,11 +29,21 @@ class SelectActivity : AppCompatActivity() {
             selectRVAdapter.updateData(result) // update the adapter with the new data
         }
 
-        viewModel.setUpFirstFlag()
+
 
         binding.laterTextArea.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            viewModel.setUpFirstFlag()
+            viewModel.saveSelectedCoinList(selectRVAdapter.selectedCoinList)
         }
+
+        viewModel.save.observe(this, Observer {
+            if (it.equals("done")) {
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+            }
+        })
+
     }
 }

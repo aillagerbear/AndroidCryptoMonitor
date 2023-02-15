@@ -11,6 +11,7 @@ import com.ail.coin.MainActivity
 import com.ail.coin.R
 import com.ail.coin.databinding.ActivitySplashBinding
 import com.ail.coin.view.intro.IntroViewModel
+import timber.log.Timber
 
 class SplashActiviy : AppCompatActivity() {
 
@@ -23,6 +24,8 @@ class SplashActiviy : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
+        binding.animeSplash.playAnimation()
+
         binding.fragmentContainerView.visibility = if (viewModel.first.value == false) {
             View.VISIBLE
         } else {
@@ -30,12 +33,16 @@ class SplashActiviy : AppCompatActivity() {
         }
 
         viewModel.checkFirstFlag()
+
+
         viewModel.first.observe(this) {
-            if(it) {
+            Timber.d(it.toString())
+            if (it) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
                 binding.fragmentContainerView.visibility = View.VISIBLE
+                binding.animeSplash.visibility = View.INVISIBLE
             }
         }
     }
