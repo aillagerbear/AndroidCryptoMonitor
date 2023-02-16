@@ -20,7 +20,7 @@ class InterestCoinEntity(
     val prev_closing_price: String,
     val units_traded: String,
     val units_traded_24H: String,
-    val selected: Boolean
+    var selected: Boolean
 
 
 )

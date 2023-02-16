@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.ail.coin.MainActivity
+import com.ail.coin.view.main.MainActivity
 import com.ail.coin.databinding.ActivitySelectBinding
 import com.ail.coin.view.adpapter.SelectRVAdapter
 import androidx.lifecycle.Observer

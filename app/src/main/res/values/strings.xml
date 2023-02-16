@@ -7,4 +7,7 @@
     <string name="coinname">coinName</string>
     <string name="coinPriceUpDown">coinPriceUpDown</string>
     <string name="isLiked">좋아요 확인</string>
+    <string name="fifteen_minutes_ago">15분전</string>
+    <string name="thirty_minutes_ago">30분 전</string>
+    <string name="forty_five_minutes_ago">45분 전</string>
 </resources>

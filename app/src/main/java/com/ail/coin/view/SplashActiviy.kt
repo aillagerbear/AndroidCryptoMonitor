@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.databinding.DataBindingUtil
-import com.ail.coin.MainActivity
+import com.ail.coin.view.main.MainActivity
 import com.ail.coin.R
 import com.ail.coin.databinding.ActivitySplashBinding
 import com.ail.coin.view.intro.IntroViewModel
