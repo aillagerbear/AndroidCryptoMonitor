@@ -1,11 +1,11 @@
-package com.ail.coin.db
+package com.ail.coin.view.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ail.coin.db.dao.InterestCoinDAO
-import com.ail.coin.db.entity.InterestCoinEntity
+import com.ail.coin.view.db.dao.InterestCoinDAO
+import com.ail.coin.view.db.entity.InterestCoinEntity
 
 
 @Database(entities = [InterestCoinEntity::class], version = 1)

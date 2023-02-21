@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ail.coin.Repository.DBRepository
 import com.ail.coin.Repository.NetWorkRepository
 import com.ail.coin.dataStore.MyDataStore
-import com.ail.coin.db.entity.InterestCoinEntity
+import com.ail.coin.view.db.entity.InterestCoinEntity
 import com.ail.coin.model.CurrentPrice
 import com.ail.coin.model.CurrentPriceResult
 import com.google.gson.Gson

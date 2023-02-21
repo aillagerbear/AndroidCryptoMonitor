@@ -1,4 +1,4 @@
-package com.ail.coin.db.entity
+package com.ail.coin.view.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

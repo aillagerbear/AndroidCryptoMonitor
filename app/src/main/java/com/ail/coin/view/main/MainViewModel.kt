@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.ail.coin.Repository.DBRepository
-import com.ail.coin.db.entity.InterestCoinEntity
+import com.ail.coin.view.db.entity.InterestCoinEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

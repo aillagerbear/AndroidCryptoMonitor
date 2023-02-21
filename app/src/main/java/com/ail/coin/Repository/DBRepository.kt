@@ -1,8 +1,8 @@
 package com.ail.coin.Repository
 
 import com.ail.coin.App
-import com.ail.coin.db.CoinPriceDatabase
-import com.ail.coin.db.entity.InterestCoinEntity
+import com.ail.coin.view.db.CoinPriceDatabase
+import com.ail.coin.view.db.entity.InterestCoinEntity
 
 class DBRepository {
 

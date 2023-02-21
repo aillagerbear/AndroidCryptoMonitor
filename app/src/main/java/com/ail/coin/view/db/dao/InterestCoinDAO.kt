@@ -1,11 +1,11 @@
-package com.ail.coin.db.dao
+package com.ail.coin.view.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.ail.coin.db.entity.InterestCoinEntity
+import com.ail.coin.view.db.entity.InterestCoinEntity
 import kotlinx.coroutines.flow.Flow
 
 
