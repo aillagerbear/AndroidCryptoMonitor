@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ail.coin.databinding.ActivitySettingBinding
 import com.ail.coin.service.PriceForegroundService
-import timber.log.Timber
 
 class SettingActivity : AppCompatActivity() {
 
@@ -40,13 +39,10 @@ class SettingActivity : AppCompatActivity() {
                     NotificationManager.IMPORTANCE_DEFAULT
                 )
                 notificationManager.createNotificationChannel(channel)
-                val channelId =
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) channel.id else "coin_channel_id"
                 val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
                     .putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 notiBoolean = true
-                Timber.d(notiBoolean.toString())
                 startActivity(intent)
             }
 
@@ -60,17 +56,14 @@ class SettingActivity : AppCompatActivity() {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
                             }
                         notiBoolean = true
-                        Timber.d(notiBoolean.toString())
                         startActivity(channelIntent)
                     }
                 }
             }
-
             registerReceiver(
                 channelNotificationSettingsReceiver,
                 IntentFilter("REQUEST_CHANNEL_NOTIFICATION_SETTINGS")
             )
-
             val intent = Intent(this, PriceForegroundService::class.java)
             intent.action = "START"
             startService(intent)

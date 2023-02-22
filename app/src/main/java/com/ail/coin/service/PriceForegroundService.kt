@@ -39,13 +39,6 @@ class PriceForegroundService : Service() {
                         delay(3000)
                     }
                 }
-                // Request alarm permission
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isIgnoringBatteryOptimizations()) {
-//                    val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
-//                    intent.data = Uri.parse("package:" + packageName)
-//                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK // Add this flag
-//                    startActivity(intent)
-//                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !isIgnoringBatteryOptimizations()) {
                     val broadcastIntent = Intent("REQUEST_CHANNEL_NOTIFICATION_SETTINGS")
                     sendBroadcast(broadcastIntent)
