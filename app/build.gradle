@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.ail.coin"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -98,5 +98,9 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    //workManager
+    // Kotlin + coroutines
+    implementation("androidx.work:work-runtime-ktx:$work_version")
 
 }

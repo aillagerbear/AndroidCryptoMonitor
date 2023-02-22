@@ -1,5 +1,6 @@
 package com.ail.coin.view.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,6 +55,7 @@ class CoinListFragment : Fragment() {
     private fun setSelectedListRV(){
 
         val selectedRVAdapter = CoinListRVAdapter(requireContext(), selectedList)
+
         binding.selectedCoinRV.adapter = selectedRVAdapter
         binding.selectedCoinRV.layoutManager = LinearLayoutManager(requireContext())
 

@@ -8,6 +8,12 @@ import com.ail.coin.view.main.MainActivity
 import com.ail.coin.databinding.ActivitySelectBinding
 import com.ail.coin.view.adpapter.SelectRVAdapter
 import androidx.lifecycle.Observer
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.ail.coin.background.GetCoinPriceRecentContractedWorkManager
+import java.util.concurrent.TimeUnit
 
 class SelectActivity : AppCompatActivity() {
 
@@ -42,8 +48,27 @@ class SelectActivity : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
 
+                saveInterestCoinDataPeriodic()
+
             }
         })
+    }
+
+
+    private fun saveInterestCoinDataPeriodic() {
+
+        val myWork = PeriodicWorkRequest.Builder(
+            GetCoinPriceRecentContractedWorkManager::class.java,
+            15,
+            TimeUnit.MINUTES
+        ).build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "GetCoinPriceRecentContractedWorkManager",
+            ExistingPeriodicWorkPolicy.KEEP,
+            myWork
+        )
 
     }
+
 }

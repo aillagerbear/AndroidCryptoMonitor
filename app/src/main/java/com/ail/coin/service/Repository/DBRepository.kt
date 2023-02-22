@@ -1,8 +1,9 @@
-package com.ail.coin.Repository
+package com.ail.coin.service.Repository
 
 import com.ail.coin.App
 import com.ail.coin.view.db.CoinPriceDatabase
 import com.ail.coin.view.db.entity.InterestCoinEntity
+import com.ail.coin.view.db.entity.SelectedCoinPriceEntity
 
 class DBRepository {
 
@@ -20,5 +21,11 @@ class DBRepository {
 
     // 사용자가 관심있어한 코인만 가져오기
     fun getAllInterestSelectedCoinData() = db.interestCoinDAO().getSelectedData()
+
+    // CoinPrice
+
+    fun getAllCoinPriceData() = db.selectedCoinDAO().getAllData()
+    fun insertCoinPriceData(selectedCoinPriceEntity: SelectedCoinPriceEntity) = db.selectedCoinDAO().insert(selectedCoinPriceEntity)
+    fun getOneSelectedCoinData(coinName : String) = db.selectedCoinDAO().getOneCoinData(coinName)
 
 }

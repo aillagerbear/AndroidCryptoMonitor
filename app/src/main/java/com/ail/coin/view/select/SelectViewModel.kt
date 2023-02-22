@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ail.coin.Repository.DBRepository
-import com.ail.coin.Repository.NetWorkRepository
+import com.ail.coin.service.Repository.DBRepository
+import com.ail.coin.service.Repository.NetWorkRepository
 import com.ail.coin.dataStore.MyDataStore
 import com.ail.coin.view.db.entity.InterestCoinEntity
 import com.ail.coin.model.CurrentPrice
@@ -59,8 +59,6 @@ class SelectViewModel : ViewModel() {
 
             for (coin in currentPriceResultList) {
 
-                Timber.d(coin.toString())
-
                 // 2. 내가 선택한 코인인지 아닌지 구분해서
                 // 포함하면 TRUE / 포함하지 않으면 FALSE
                 val selected = selectedCoinList.contains(coin.coinName)
@@ -81,22 +79,14 @@ class SelectViewModel : ViewModel() {
                     coin.coinInfo.fluctate_rate_24H,
                     selected
                 )
-
-
                 // 3. 저장
                 interestCoinEntity.let {
                     Timber.d(it.toString())
                     dbRepository.insertInterestCoinData(it)
                 }
-
-
             }
-
             withContext(Dispatchers.Main) {
                 _saved.value = "done"
             }
-
-
         }
-
 }
