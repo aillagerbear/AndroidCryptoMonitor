@@ -16,65 +16,36 @@ import com.ail.coin.service.PriceForegroundService
 
 class SettingActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySettingBinding
-    var notiBoolean = false
+    private lateinit var binding : ActivitySettingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivitySettingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val view = binding.root
+        setContentView(view)
+
 
         binding.startForeground.setOnClickListener {
 
             Toast.makeText(this, "start", Toast.LENGTH_LONG).show()
 
-            val notificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            var myNotificationChannel: NotificationChannel? = null
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !notiBoolean) {
-                val channel = NotificationChannel(
-                    "coin_channel_id",
-                    "Coin",
-                    NotificationManager.IMPORTANCE_DEFAULT
-                )
-                notificationManager.createNotificationChannel(channel)
-                val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                    .putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                notiBoolean = true
-                startActivity(intent)
-            }
-
-            val channelNotificationSettingsReceiver = object : BroadcastReceiver() {
-                override fun onReceive(context: Context?, intent: Intent?) {
-                    if (intent?.action == "REQUEST_CHANNEL_NOTIFICATION_SETTINGS" && !notiBoolean) {
-                        val channelIntent =
-                            Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
-                                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-                                putExtra(Settings.EXTRA_CHANNEL_ID, myNotificationChannel?.id)
-                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                            }
-                        notiBoolean = true
-                        startActivity(channelIntent)
-                    }
-                }
-            }
-            registerReceiver(
-                channelNotificationSettingsReceiver,
-                IntentFilter("REQUEST_CHANNEL_NOTIFICATION_SETTINGS")
-            )
             val intent = Intent(this, PriceForegroundService::class.java)
             intent.action = "START"
             startService(intent)
+
         }
 
         binding.stopForeground.setOnClickListener {
+
             Toast.makeText(this, "stop", Toast.LENGTH_LONG).show()
+
             val intent = Intent(this, PriceForegroundService::class.java)
             intent.action = "STOP"
-            notiBoolean = false
             startService(intent)
+
+
         }
+
+
     }
 }

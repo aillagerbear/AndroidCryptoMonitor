@@ -10,35 +10,24 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.ail.coin.App
 
 class MyDataStore {
-
     private val context = App.context()
-
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("user_pref")
     }
 
     private val mDataStore: DataStore<Preferences> = context.dataStore
-
     private val FIRST_FLAG = booleanPreferencesKey("FIRST_FLAG")
-
-    // 메인엑티비티 진입시 TRUE로 변경
 
     suspend fun setupFirstData() {
         mDataStore.edit { preferences ->
             preferences[FIRST_FLAG] = true
         }
     }
-
     suspend fun getFirstData() : Boolean {
-
         var currentValue = false
-
         mDataStore.edit { preferences ->
             currentValue = preferences[FIRST_FLAG] ?: false
         }
-
         return currentValue
-
     }
-
 }
